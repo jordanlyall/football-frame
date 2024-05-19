@@ -3,9 +3,6 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
-
 class FootballGame {
     constructor() {
         this.startYardLine = 25;
@@ -84,16 +81,18 @@ class FootballGame {
 
 app.use(express.json());
 
-// Serve the root URL with the index.html file
+// Serve the root URL with a simple instruction
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.send("Go to /frame to start the game.");
 });
 
 app.get('/frame', (req, res) => {
-    const { choice, down = 1, yardsToTouchdown = 75 } = req.query;
+    const { choice, down = 1, yardsToTouchdown = 75, gameOver = false } = req.query;
     const game = new FootballGame();
     game.down = parseInt(down);
     game.yardsToTouchdown = parseInt(yardsToTouchdown);
+    game.gameOver = gameOver === 'true';
+
     let message = "Welcome to the Football Game! Click 'Start Game' to begin.";
 
     if (choice) {
