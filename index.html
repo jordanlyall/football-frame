@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="http://yourdomain.com/start-game.png" />
-    <meta property="fc:frame:button:1" content="Start Game" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <p>Welcome to the Football Game! Click "Start Game" to begin.</p>
+  <div id="game-container">
+    <h1>Football Game</h1>
+    <div id="game-status"></div>
+    <div id="play-options">
+      <button onclick="startGame()">Play</button>
+    </div>
+  </div>
+  <script src="game.js"></script>
 </body>
 </html>
