@@ -81,11 +81,6 @@ class FootballGame {
 
 app.use(express.json());
 
-// Serve the root URL with a simple instruction
-app.get('/', (req, res) => {
-    res.send("Go to /frame to start the game.");
-});
-
 app.get('/frame', (req, res) => {
     const { choice, down = 1, yardsToTouchdown = 75, gameOver = false } = req.query;
     const game = new FootballGame();
@@ -115,7 +110,7 @@ app.get('/frame', (req, res) => {
         <html>
         <head>
             <meta property="fc:frame" content="vNext" />
-            <meta property="fc:frame:image" content="https://i.imgur.com/kdzv3zN.png" />
+            <meta property="fc:frame:image" content="public/images/frameCover.png" />
             ${buttons}
         </head>
         <body>
