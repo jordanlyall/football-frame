@@ -90,6 +90,8 @@ app.get('/', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
+            <meta property="og:title" content="Football Game" />
+            <meta property="og:description" content="Play the exciting football game!" />
             <meta property="fc:frame" content="vNext" />
             <meta property="fc:frame:image" content="https://football-frame.vercel.app/images/frameCover.png" />
             <meta property="fc:frame:button:1" content="Start Game" />
@@ -131,6 +133,8 @@ app.get('/frame', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
+            <meta property="og:title" content="Football Game" />
+            <meta property="og:description" content="Play the exciting football game!" />
             <meta property="fc:frame" content="vNext" />
             <meta property="fc:frame:image" content="https://football-frame.vercel.app/images/frameCover.png" />
             ${buttons}
