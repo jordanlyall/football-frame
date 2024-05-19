@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
             <meta property="fc:frame" content="vNext" />
             <meta property="fc:frame:image" content="https://football-frame.vercel.app/images/frameCover.png" />
             <meta property="fc:frame:button:1" content="Start Game" />
-            <link rel="stylesheet" href="styles.css">
+            <link rel="stylesheet" href="/styles.css">
         </head>
         <body>
             <div id="game-container">
@@ -27,11 +27,10 @@ app.get('/', (req, res) => {
                     <button onclick="startGame()">Start Game</button>
                 </div>
             </div>
-            <script src="game.js"></script>
+            <script src="/game.js"></script>
         </body>
         </html>
     `;
-    console.log(htmlResponse); // Log the response to verify
     res.send(htmlResponse);
 });
 
