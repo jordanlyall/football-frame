@@ -81,6 +81,14 @@ class FootballGame {
 
 app.use(express.json());
 
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve the root URL with a simple instruction
+app.get('/', (req, res) => {
+    res.send("Go to /frame to start the game.");
+});
+
 app.get('/frame', (req, res) => {
     const { choice, down = 1, yardsToTouchdown = 75, gameOver = false } = req.query;
     const game = new FootballGame();
