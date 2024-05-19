@@ -110,7 +110,7 @@ app.get('/frame', (req, res) => {
         <html>
         <head>
             <meta property="fc:frame" content="vNext" />
-            <meta property="fc:frame:image" content="public/images/frameCover.png" />
+            <meta property="fc:frame:image" content="https://football-frame.vercel.app/images/frameCover.png" />
             ${buttons}
         </head>
         <body>
