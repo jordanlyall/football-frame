@@ -14,115 +14,63 @@ class FootballGame {
 
   hbDive() {
       const outcome = Math.random();
-      if (outcome < 0.10) { // 10% chance of fumble
-          return "fumble";
-      } else if (outcome < 0.25) { // 15% chance of negative yardage
-          return -Math.floor(Math.random() * 3) - 1; // -1 to -3 yards
-      } else if (outcome < 0.35) { // 10% chance of no gain
-          return 0; // 0 yards
-      } else if (outcome < 0.65) { // 30% chance of gaining 2-5 yards
-          return Math.floor(Math.random() * 4) + 2; // 2 to 5 yards
-      } else if (outcome < 0.85) { // 20% chance of gaining 6-10 yards
-          return Math.floor(Math.random() * 5) + 6; // 6 to 10 yards
-      } else { // 15% chance of gaining 11-20 yards
-          return Math.floor(Math.random() * 10) + 11; // 11 to 20 yards
-      }
+      if (outcome < 0.10) { return "fumble"; }
+      else if (outcome < 0.25) { return -Math.floor(Math.random() * 3) - 1; }
+      else if (outcome < 0.35) { return 0; }
+      else if (outcome < 0.65) { return Math.floor(Math.random() * 4) + 2; }
+      else if (outcome < 0.85) { return Math.floor(Math.random() * 5) + 6; }
+      else { return Math.floor(Math.random() * 10) + 11; }
   }
 
   quickToss() {
       const outcome = Math.random();
-      if (outcome < 0.10) { // 10% chance of fumble
-          return "fumble";
-      } else if (outcome < 0.25) { // 15% chance of negative yardage
-          return -Math.floor(Math.random() * 3) - 1; // -1 to -3 yards
-      } else if (outcome < 0.45) { // 20% chance of no gain
-          return 0; // 0 yards
-      } else if (outcome < 0.65) { // 20% chance of gaining 2-5 yards
-          return Math.floor(Math.random() * 4) + 2; // 2 to 5 yards
-      } else if (outcome < 0.85) { // 20% chance of gaining 6-10 yards
-          return Math.floor(Math.random() * 5) + 6; // 6 to 10 yards
-      } else { // 15% chance of gaining 11-20 yards
-          return Math.floor(Math.random() * 10) + 11; // 11 to 20 yards
-      }
+      if (outcome < 0.10) { return "fumble"; }
+      else if (outcome < 0.25) { return -Math.floor(Math.random() * 3) - 1; }
+      else if (outcome < 0.45) { return 0; }
+      else if (outcome < 0.65) { return Math.floor(Math.random() * 4) + 2; }
+      else if (outcome < 0.85) { return Math.floor(Math.random() * 5) + 6; }
+      else { return Math.floor(Math.random() * 10) + 11; }
   }
 
   doublePost() {
       const outcome = Math.random();
-      if (outcome < 0.10) { // 10% chance of interception
-          return "interception";
-      } else if (outcome < 0.15) { // 5% chance of fumble
-          return "fumble";
-      } else if (outcome < 0.40) { // 25% chance of incomplete pass
-          return 0; // no yards gained
-      } else if (outcome < 0.65) { // 25% chance of gaining 6-15 yards
-          return Math.floor(Math.random() * 10) + 6; // 6 to 15 yards
-      } else if (outcome < 0.90) { // 25% chance of gaining 16-25 yards
-          return Math.floor(Math.random() * 10) + 16; // 16 to 25 yards
-      } else { // 15% chance of gaining 26-36 yards
-          return Math.floor(Math.random() * 11) + 26; // 26 to 36 yards
-      }
+      if (outcome < 0.10) { return "interception"; }
+      else if (outcome < 0.15) { return "fumble"; }
+      else if (outcome < 0.40) { return 0; }
+      else if (outcome < 0.65) { return Math.floor(Math.random() * 10) + 6; }
+      else if (outcome < 0.90) { return Math.floor(Math.random() * 10) + 16; }
+      else { return Math.floor(Math.random() * 11) + 26; }
   }
 
   paYCross() {
       const outcome = Math.random();
-      if (outcome < 0.15) { // 15% chance of interception
-          return "interception";
-      } else if (outcome < 0.20) { // 5% chance of fumble
-          return "fumble";
-      } else if (outcome < 0.45) { // 25% chance of incomplete pass
-          return 0; // no yards gained
-      } else if (outcome < 0.65) { // 20% chance of gaining 6-15 yards
-          return Math.floor(Math.random() * 10) + 6; // 6 to 15 yards
-      } else if (outcome < 0.85) { // 20% chance of gaining 16-25 yards
-          return Math.floor(Math.random() * 10) + 16; // 16 to 25 yards
-      } else { // 15% chance of gaining 26-36 yards
-          return Math.floor(Math.random() * 11) + 26; // 26 to 36 yards
-      }
+      if (outcome < 0.15) { return "interception"; }
+      else if (outcome < 0.20) { return "fumble"; }
+      else if (outcome < 0.45) { return 0; }
+      else if (outcome < 0.65) { return Math.floor(Math.random() * 10) + 6; }
+      else if (outcome < 0.85) { return Math.floor(Math.random() * 10) + 16; }
+      else { return Math.floor(Math.random() * 11) + 26; }
   }
 
   makePlay(choice) {
-      if (!this.playOptions[choice]) {
-          alert("Invalid choice. Try again.");
-          return;
-      }
-
-      const { name, func } = this.playOptions[choice];
-      const result = func();
-
-      if (result === "interception") {
-          this.updateStatus(`You chose ${name}. Oh no! The pass was intercepted. Game over.`);
+      const play = this.playOptions[choice];
+      if (!play) { return "Invalid choice. Try again."; }
+      const result = play.func();
+      if (result === "interception" || result === "fumble") {
           this.gameOver = true;
-      } else if (result === "fumble") {
-          this.updateStatus(`You chose ${name}. Oh no! The ball was fumbled. Game over.`);
+          return `You chose ${play.name}. Oh no! The pass was intercepted. Game over.`;
+      }
+      this.yardsToTouchdown -= result;
+      if (this.yardsToTouchdown <= 0) {
           this.gameOver = true;
-      } else {
-          this.yardsToTouchdown -= result;
-          if (this.yardsToTouchdown <= 0) {
-              this.updateStatus(`You chose ${name}. You gained ${result} yards. Touchdown! You win!`);
-              this.gameOver = true;
-          } else {
-              if (result >= 10) {
-                  this.down = 1;
-              } else {
-                  this.down += 1;
-              }
-
-              this.updateStatus(`You chose ${name}. You gained ${result} yards. Down: ${this.down}, Yards to Touchdown: ${this.yardsToTouchdown}`);
-              
-              if (this.down > 4) {
-                  this.updateStatus("You turned the ball over on downs. Game over.");
-                  this.gameOver = true;
-              }
-          }
+          return `You chose ${play.name}. You gained ${result} yards. Touchdown! You win!`;
       }
-
-      if (this.gameOver) {
-          document.getElementById('play-options').innerHTML = '<button onclick="startGame()">Play Again</button>';
+      if (result >= 10) { this.down = 1; } else { this.down += 1; }
+      if (this.down > 4) {
+          this.gameOver = true;
+          return "You turned the ball over on downs. Game over.";
       }
-  }
-
-  updateStatus(message) {
-      document.getElementById('game-status').innerText = message;
+      return `You chose ${play.name}. You gained ${result} yards. Down: ${this.down}, Yards to Touchdown: ${this.yardsToTouchdown}`;
   }
 }
 
@@ -140,5 +88,6 @@ function startGame() {
 }
 
 function makePlay(choice) {
-  game.makePlay(choice);
+  const result = game.makePlay(choice);
+  document.getElementById('game-status').innerText = result;
 }
