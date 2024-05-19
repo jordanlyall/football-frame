@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Simplified root URL response
+// Serve the root URL with Open Graph tags
 app.get('/', (req, res) => {
     const htmlResponse = `
         <!DOCTYPE html>
@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
         </body>
         </html>
     `;
-    console.log(htmlResponse); // Log the response to verify
     res.send(htmlResponse);
 });
 
