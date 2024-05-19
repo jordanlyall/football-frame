@@ -86,7 +86,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve the root URL with Open Graph tags
 app.get('/', (req, res) => {
-    res.send(`
+    const htmlResponse = `
         <!DOCTYPE html>
         <html>
         <head>
@@ -98,7 +98,9 @@ app.get('/', (req, res) => {
             <p>Welcome to the Football Game! Click 'Start Game' to begin.</p>
         </body>
         </html>
-    `);
+    `;
+    console.log(htmlResponse); // Log the response to verify
+    res.send(htmlResponse);
 });
 
 app.get('/frame', (req, res) => {
@@ -125,19 +127,21 @@ app.get('/frame', (req, res) => {
         buttons = `<meta property="fc:frame:button:1" content="Play Again" />`;
     }
 
-    res.send(`
+    const htmlResponse = `
         <!DOCTYPE html>
         <html>
         <head>
             <meta property="fc:frame" content="vNext" />
-            <meta property="fc:frame:image" content="https://${req.get('host')}/images/frameCover.png" />
+            <meta property="fc:frame:image" content="https://football-frame.vercel.app/images/frameCover.png" />
             ${buttons}
         </head>
         <body>
             <p>${message}</p>
         </body>
         </html>
-    `);
+    `;
+    console.log(htmlResponse); // Log the response to verify
+    res.send(htmlResponse);
 });
 
 app.listen(port, () => {
