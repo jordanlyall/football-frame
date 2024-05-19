@@ -115,7 +115,7 @@ app.get('/frame', (req, res) => {
         <html>
         <head>
             <meta property="fc:frame" content="vNext" />
-            <meta property="fc:frame:image" content="http://yourdomain.com/game.png" />
+            <meta property="fc:frame:image" content="https://i.imgur.com/kdzv3zN.png" />
             ${buttons}
         </head>
         <body>
