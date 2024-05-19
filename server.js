@@ -31,6 +31,7 @@ app.get('/', (req, res) => {
         </body>
         </html>
     `;
+    console.log(htmlResponse); // Log the response to verify
     res.send(htmlResponse);
 });
 
