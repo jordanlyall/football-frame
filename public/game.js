@@ -73,21 +73,3 @@ class FootballGame {
       return `You chose ${play.name}. You gained ${result} yards. Down: ${this.down}, Yards to Touchdown: ${this.yardsToTouchdown}`;
   }
 }
-
-let game;
-
-function startGame() {
-  game = new FootballGame();
-  document.getElementById('game-status').innerText = "Welcome to the Football Game! You start at the 25 yard line. Choose your plays wisely to score a touchdown. You have four downs to make it to the end zone. Good luck!";
-  document.getElementById('play-options').innerHTML = `
-      <button onclick="makePlay('1')">HB Dive (run)</button>
-      <button onclick="makePlay('2')">Quick Toss (run)</button>
-      <button onclick="makePlay('3')">Double Post (pass)</button>
-      <button onclick="makePlay('4')">PA Y Cross (pass)</button>
-  `;
-}
-
-function makePlay(choice) {
-  const result = game.makePlay(choice);
-  document.getElementById('game-status').innerText = result;
-}
