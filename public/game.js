@@ -78,7 +78,7 @@ let game;
 
 function startGame() {
   game = new FootballGame();
-  game.updateStatus("Welcome to the Football Game! You start at the 25 yard line. Choose your plays wisely to score a touchdown. You have four downs to make it to the end zone. Good luck!");
+  document.getElementById('game-status').innerText = "Welcome to the Football Game! You start at the 25 yard line. Choose your plays wisely to score a touchdown. You have four downs to make it to the end zone. Good luck!";
   document.getElementById('play-options').innerHTML = `
       <button onclick="makePlay('1')">HB Dive (run)</button>
       <button onclick="makePlay('2')">Quick Toss (run)</button>

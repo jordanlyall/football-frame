@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
         <body>
             <div id="game-container">
                 <h1>Football Game</h1>
-                <div id="game-status"></div>
+                <div id="game-status">Welcome to the Football Game! Click 'Start Game' to begin.</div>
                 <div id="play-options">
                     <button onclick="startGame()">Start Game</button>
                 </div>
@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
     res.send(htmlResponse);
 });
 
+// Frame endpoint to handle play actions and return updated frame
 app.get('/frame', (req, res) => {
     const { choice } = req.query;
     let message = "Welcome to the Football Game! Click 'Start Game' to begin.";
